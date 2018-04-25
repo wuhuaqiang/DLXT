@@ -17,20 +17,14 @@
     "clipboard": "1.7.1",
     "codemirror": "5.26.0",
     "dropzone": "5.1.0",
-<<<<<<< HEAD
-=======
     "easyui": "^8.0.0",
->>>>>>> eb742e5... 电网系统
     "echarts": "3.8.2",
     "element-ui": "^2.3.4",
     "file-saver": "1.3.3",
     "jquery": "^3.3.1",
     "js-cookie": "2.1.4",
-<<<<<<< HEAD
     "jsonlint": "1.6.3",
-=======
     "jsonlint": "1.6.2",
->>>>>>> eb742e5... 电网系统
     "jszip": "^3.1.4",
     "mockjs": "1.0.1-beta3",
     "normalize.css": "7.0.0",
