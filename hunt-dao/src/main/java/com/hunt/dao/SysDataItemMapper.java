@@ -9,6 +9,9 @@ public interface SysDataItemMapper {
     //新增
     public Long insert(SysDataItem SysDataItem);
 
+    //查询最新字典ID
+    public int selectMaxId();
+
     //更新
     public void update(SysDataItem SysDataItem);
 

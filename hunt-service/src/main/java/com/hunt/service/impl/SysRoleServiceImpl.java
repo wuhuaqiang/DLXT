@@ -51,7 +51,7 @@ public class SysRoleServiceImpl implements SysRoleService {
             sysRolePermission.setSysPermissionId(Long.valueOf(permissionIdsArray[i]));
             sysRolePermissionMapper.insert(sysRolePermission);
         }
-        return sysRole.getId();
+        return sysRoleMapper.selectMaxId();
     }
 
     @Override

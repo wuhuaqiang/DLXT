@@ -23,6 +23,8 @@ public interface SysUserMapper {
 
     //查询数量
     public int selectCounts();
+    //查询最新用户ID
+    public int selectMaxId();
 
     boolean selectByLoginName(@Param("loginName") String loginName);
 

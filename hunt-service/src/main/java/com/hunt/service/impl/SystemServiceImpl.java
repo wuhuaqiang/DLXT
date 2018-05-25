@@ -140,7 +140,7 @@ public class SystemServiceImpl implements SystemService {
     @Override
     public long insertSysDataItem(SysDataItem sysDataItem) {
         sysDataItemMapper.insert(sysDataItem);
-        return sysDataItem.getId();
+        return sysDataItemMapper.selectMaxId();
     }
 
     @Override

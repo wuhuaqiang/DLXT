@@ -33,7 +33,7 @@ public class OauthController extends BaseController {
     @RequestMapping(value = "github", method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
     public Result github(HttpServletRequest request) throws IOException {
-        log.debug(request.getParameter("code"));
+      /*  log.debug(request.getParameter("code"));
         String code = request.getParameter("code");
         if (StringUtils.hasText(code)) {
             String access_token_url = "https://github.com/login/oauth/access_token?client_id=" + SystemConstant.github_client_id + "&client_secret=" + SystemConstant.github_client_secret + "&code=" + code + "&redirect_uri=" + SystemConstant.github_oauth_url;
@@ -55,7 +55,7 @@ public class OauthController extends BaseController {
             log.debug("user_info:{}", user_info);
             client.close();
             SecurityUtils.getSubject().login(new UsernamePasswordToken("admin", "111111"));
-        }
+        }*/
         return Result.success();
     }
 }

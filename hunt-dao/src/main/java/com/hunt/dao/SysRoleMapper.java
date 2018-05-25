@@ -12,6 +12,9 @@ public interface SysRoleMapper {
     //更新
     public void update(SysRole SysRole);
 
+    //查询最新角色ID
+    public int selectMaxId();
+
     //通过对象进行查询
     public SysRole select(SysRole SysRole);
 

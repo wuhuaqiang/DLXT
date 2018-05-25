@@ -43,7 +43,7 @@ public class SysPermissionServiceImpl implements SysPermissionService {
     @Override
     public long insertPermission(SysPermission sysPermission) {
         Long id = sysPermissionMapper.insert(sysPermission);
-        return id;
+        return sysPermissionMapper.selectMaxId();
     }
 
     @Override

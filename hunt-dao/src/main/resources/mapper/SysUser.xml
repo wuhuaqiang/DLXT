@@ -283,6 +283,10 @@
         </where>
     </select>
 
+    <select id="selectMaxId" resultType="integer">
+        SELECT MAX(ID) FROM SYS_USER
+    </select>
+
     <select id="selectById" parameterType="long" resultType="SysUser">
         SELECT *
         FROM sys_user
@@ -293,7 +297,7 @@
         SELECT *
         FROM sys_user
         WHERE status != 2
-        <if test="loginName != null and loginName.length() != 0">
+        <!--<if test="loginName != null and loginName.length() != 0">
             AND login_name LIKE concat('%', #{loginName},'%')
         </if>
         <if test="zhName != null and zhName.length() != 0">
@@ -313,7 +317,7 @@
         </if>
         <if test="order!=''">
             #{order}
-        </if>
+        </if>-->
     </select>
 
     <select id="selectCounts" resultType="integer">
@@ -322,18 +326,14 @@
         WHERE status != 2
     </select>
     <select id="selectByLoginName" resultType="boolean">
-        SELECT exists(
-                SELECT *
+                SELECT count (*)
                 FROM sys_user
                 WHERE status != 2 AND login_name = #{loginName}
-        )
     </select>
     <select id="isExistLoginNameExcludeId" resultType="java.lang.Boolean">
-        SELECT exists(
-                SELECT *
+                SELECT count (*)
                 FROM sys_user
                 WHERE status != 2 AND id != #{id} AND login_name = #{loginName}
-        )
     </select>
     <select id="selectUserByLoginName" resultType="com.hunt.model.entity.SysUser">
         SELECT *

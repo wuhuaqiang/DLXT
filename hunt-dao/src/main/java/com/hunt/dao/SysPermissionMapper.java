@@ -9,6 +9,9 @@ public interface SysPermissionMapper {
     //新增
     public Long insert(SysPermission SysPermission);
 
+    //查询最新权限ID
+    public int selectMaxId();
+
     //更新
     public void update(SysPermission SysPermission);
 

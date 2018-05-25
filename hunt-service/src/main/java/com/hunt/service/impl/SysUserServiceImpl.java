@@ -63,7 +63,7 @@ public class SysUserServiceImpl implements SysUserService {
                 sysUserPermissionMapper.insert(userPermission);
             }
         }
-        return user.getId();
+        return sysUserMapper.selectMaxId();
     }
 
     @Override

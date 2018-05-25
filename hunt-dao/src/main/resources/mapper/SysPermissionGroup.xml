@@ -201,11 +201,9 @@
         WHERE status = 1
     </select>
     <select id="isExistGroupName" resultType="java.lang.Boolean">
-        SELECT exists(
-                SELECT *
+                SELECT COUNT(*)
                 FROM sys_permission_group
                 WHERE status = 1 AND name = #{name}
-        )
     </select>
 
 </mapper>

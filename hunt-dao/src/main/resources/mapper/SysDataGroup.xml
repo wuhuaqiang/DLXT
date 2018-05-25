@@ -202,11 +202,9 @@
         WHERE status = 1
     </select>
     <select id="isExistName" resultType="java.lang.Boolean">
-        SELECT exists(
-                SELECT *
+                SELECT COUNT(*)
                 FROM sys_data_group
                 WHERE status = 1 AND name = #{name}
-        )
     </select>
 
 </mapper>

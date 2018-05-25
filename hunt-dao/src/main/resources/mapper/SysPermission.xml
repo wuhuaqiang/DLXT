@@ -81,7 +81,7 @@
                 description,
             </if>
             <if test="code !=null and code.length() !=0">
-                `code`,
+                code,
             </if>
             <if test="sysPermissionGroupId !=null">
                 sys_permission_group_id,
@@ -157,7 +157,7 @@
                 description = #{description},
             </if>
             <if test="code !=null and code.length() !=0">
-                `code` = #{code},
+                code = #{code},
             </if>
             <if test="sysPermissionGroupId !=null">
                 sys_permission_group_id = #{sysPermissionGroupId},
@@ -207,38 +207,34 @@
         ORDER BY sys_permission_group_id
     </select>
 
+    <select id="selectMaxId" resultType="integer">
+        SELECT MAX(ID) FROM SYS_USER
+    </select>
+
     <select id="selectCounts" resultType="integer">
         SELECT count(*)
         FROM sys_permission
         WHERE status = 1
     </select>
     <select id="isExistName" resultType="java.lang.Boolean">
-        SELECT exists(
-                SELECT *
+                SELECT COUNT(*)
                 FROM sys_permission
                 WHERE status = 1 AND name = #{name} AND sys_permission_group_id = #{groupId}
-        )
     </select>
     <select id="isExistCode" resultType="java.lang.Boolean">
-        SELECT exists(
-                SELECT *
+                SELECT COUNT(*)
                 FROM sys_permission
                 WHERE status = 1 AND code = #{code} AND sys_permission_group_id = #{groupId}
-        )
     </select>
     <select id="isExistNameExcludeId" resultType="java.lang.Boolean">
-        SELECT exists(
-                SELECT *
+                SELECT COUNT(*)
                 FROM sys_permission
                 WHERE status = 1 AND name = #{name} AND sys_permission_group_id = #{groupId} AND id != #{id}
-        )
     </select>
     <select id="isExistCodeExcludeId" resultType="java.lang.Boolean">
-        SELECT exists(
-                SELECT *
+                SELECT COUNT(*)
                 FROM sys_permission
                 WHERE status = 1 AND code = #{code} AND sys_permission_group_id = #{groupId} AND id != #{id}
-        )
     </select>
 
 </mapper>

@@ -221,17 +221,13 @@
         WHERE status = 1 AND parent_id = #{parentId}
     </select>
     <select id="isExistFullName" resultType="java.lang.Boolean">
-        SELECT exists(
-                SELECT *
+                SELECT COUNT(*)
                 FROM sys_organization
                 WHERE status = 1 AND full_name = #{fullName}
-        )
     </select>
     <select id="isExistFullNameExcludeId" resultType="java.lang.Boolean">
-        SELECT exists(
-                SELECT *
+                SELECT COUNT(*)
                 FROM sys_organization
                 WHERE status = 1 AND id != #{id} AND full_name = #{fullName}
-        )
     </select>
 </mapper>
