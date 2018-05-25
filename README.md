@@ -1,213 +1,58 @@
-# vue-element-admin #
+**系统介绍**
+
+包含通用模块的后台管理系统,名字来源于BBC的纪录片`The hunt` ,用的都是工作中比较主流的框架 , 主要特点
+
+- 用redis实现`shiroCache`,`shiroSession`管理, 服务器重启不会影响用户状态信息 .
+- 灵活的权限配置方案,可为某一角色统一配置权限也可为某一用户单独配置权限 ,最大化满足个性化权限需求 ,并且权限动态刷新,立即生效 ,无需重新登录,
+-  职位信息由 部门,角色,权限组成, 基本满足各种变态人事组织需求 ,无限制上下级目录,身兼多职都不是问题....
+- 终端登录限制 ,自动下线同类型终端异地账号 , 强制某终端用户下线 ,禁用启动账户 .
+- ip拦截
+- 数据字典: 查询自动走缓存, 拒绝硬编码....
+- 请求日志,开发环境错误日志输出,方便分析和调试 .
+- 统一异常处理,json请求返回json类型错误数据,普通web请求返回普通web错误页面.
+- 生产,开发,本地环境分离, 便于持续集成 ,例如 `mvn clean install -Pprod`
+- 集成`springfox`文档管理 , 接口调试非常方便 , 解决文档维护痛点....
+
+
+**系统部署**
+
+- 创建`mysql`数据库 ,运行`doc`文件夹下的`hunt-admin-initdb.sql`, 安装`Redis`(port:6379)... 可根据自身环境修改`env.properties`的数据库和redis属性.
+- IDE导入maven工程 ,等待依赖下载 .
+- 设置访问端口为:8086 ,不然极限验证通不过(绑定了127.0.0.1:8086端口) , 当然你可以自己申请极限验证账号绑定自己设置的端口,然后替换调数据字典的值
+- `run` , `用户名`:admin/admin2 `密码`:111111,,然后就随意折腾吧
+
+**技术方案**
+
+- Spring
+- Springmvc
+- Shiro
+- Springfox
+- Mybatis
+- Mysql
+- Redis
+- Jquery
+- EasyUi
+- Maven
+
+**License**
+
+- apache license 2.0
+
+
+**系统截图**
+![](https://ws1.sinaimg.cn/large/005FPDgcgy1fp2xf2bg5lj30jg0a1gmd.jpg)
+![](https://ws1.sinaimg.cn/large/005FPDgcgy1fp2xf29ixoj30jg0a10th.jpg)
+![](https://ws1.sinaimg.cn/large/005FPDgcgy1fp2xf2kd8dj30jg0a1mzg.jpg)
+![](https://ws1.sinaimg.cn/large/005FPDgcgy1fp2xf2a4qoj30jg0a1ta7.jpg)
+![](https://ws1.sinaimg.cn/large/005FPDgcgy1fp2xf2mzohj30jg0a1n16.jpg)
+![](https://ws1.sinaimg.cn/large/005FPDgcgy1fp2xf2a90pj30jg0a1q3i.jpg)
+![](https://ws1.sinaimg.cn/large/005FPDgcgy1fp2xf2aujtj30jg0a0jsn.jpg)
+![](https://ws1.sinaimg.cn/large/005FPDgcgy1fp2xf2jvuoj30jg0a1dhu.jpg)
+![](https://ws1.sinaimg.cn/large/005FPDgcgy1fp2xf2chegj30jg0a1q3u.jpg)
+![](https://ws1.sinaimg.cn/large/005FPDgcgy1fp2xf2fkvkj30jg0a13zd.jpg)
+![](https://ws1.sinaimg.cn/large/005FPDgcgy1fp2xf2fkd7j30jg0a175e.jpg)
+![](https://ws1.sinaimg.cn/large/005FPDgcgy1fp2xf2ey8rj30jg0a175e.jpg)
+![](https://ws1.sinaimg.cn/large/005FPDgcgy1fp2xf2fr5sj30jg0a1q3i.jpg)
+![](https://ws1.sinaimg.cn/large/005FPDgcgy1fp2xf2ii7xj30jg0a174g.jpg)
 
-[![vue](https://img.shields.io/badge/vue-2.4.2-brightgreen.svg)](https://github.com/vuejs/vue)
-[![element-ui](https://img.shields.io/badge/element--ui-1.4.2-brightgreen.svg)](https://github.com/ElemeFE/element)
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/PanJiaChen/vue-element-admin/blob/master/LICENSE)
-[![GitHub release](https://img.shields.io/github/release/PanJiaChen/vue-element-admin.svg)]()
 
-
-[线上地址](http://panjiachen.github.io/vue-element-admin)
-
-[English Document](https://github.com/PanJiaChen/vue-element-admin/blob/master/README-en.md)
-
-[wiki](https://github.com/PanJiaChen/vue-element-admin/wiki)
-
-[donate](https://github.com/PanJiaChen/vue-element-admin#donate)
-
-**本项目的定位是后台集成方案，不适合当基础模板来开发。**
- - 模板建议使用: [vueAdmin-template](https://github.com/PanJiaChen/vueAdmin-template)  
- - 桌面端: [electron-vue-admin](https://github.com/PanJiaChen/electron-vue-admin)
-
-
-
-**注意：该项目目前使用element-ui@1.4.2版本，所以最低兼容 Vue 2.3.0**
-
-楼主这里有一份调查[问卷](https://www.wjx.cn/m/16866569.aspx) 有空请填写一下，以表对本项目的支持~ps:不是给这个调查问卷网站做广告，所以填完问卷不用点上面抽奖有的没的那些东西
-
-## 前言
-> 这半年来一直在用vue写管理后台，目前后台已经有百来个页面，十几种权限，但维护成本依然很低，所以准备开源分享一下后台开发的经验和成果。目前的技术栈主要的采用vue+element+axios由webpack2打包。由于是个人项目，所以数据请求都是用了mockjs模拟。注意：在此项目基础上改造开发时请移除mock文件。
-
-
-写了一个系列的教程配套文章，如何从零构建后一个完整的后台项目:
-
- - [wiki](https://github.com/PanJiaChen/vue-element-admin/wiki)
- - [手摸手，带你用 vue 撸后台 系列一(基础篇)](https://juejin.im/post/59097cd7a22b9d0065fb61d2)
- - [手摸手，带你用 vue 撸后台 系列二(登录权限篇)](https://juejin.im/post/591aa14f570c35006961acac)
- - [手摸手，带你用 vue 撸后台 系列三 (实战篇)](https://juejin.im/post/593121aa0ce4630057f70d35)
- - [手摸手，带你用vue撸后台 系列四(vueAdmin 一个极简的后台基础模板)](https://juejin.im/post/595b4d776fb9a06bbe7dba56)
- - [手摸手，带你封装一个vue component](https://segmentfault.com/a/1190000009090836)
-
- 相应需求，开了一个qq群 `591724180` 方便大家交流
-
- 或者可以加入该 **[圈子](https://jianshiapp.com/circles/1209)** 讨论问题
-
- **如有问题请先看上述文章和Wiki，若不能满足，欢迎 issue 和 pr**
-
- **该项目并不是一个脚手架，更倾向于是一个集成解决方案**
-
- **该项目不支持低版本游览器(如ie)，有需求请自行添加polyfill [详情](https://github.com/PanJiaChen/vue-element-admin/wiki#babel-polyfill)**
-
-
-## 功能
-- 登录/注销
-- 权限验证
-- 侧边栏
-- 面包屑
-- 富文本编辑器
-- Markdown编辑器
-- JSON编辑器
-- 列表拖拽
-- plitPane
-- Dropzone
-- Sticky
-- CountTo
-- echarts图表
-- 401，404错误页面
-- 错误日志
-- 导出excel
-- zip
-- 前端可视化excel
-- table example
-- 动态table example
-- 拖拽table example
-- 内联编辑table example
-- form example
-- 多环境发布
-- dashboard
-- 二次登录
-- 动态侧边栏（支持多级路由）
-- mock数据
-- cache tabs example
-- screenfull
-- markdown2html
-- views-tab
-- clipboard
-
-
-## 开发
-```bash
-    # 克隆项目
-    git clone https://github.com/PanJiaChen/vue-element-admin.git
-
-    # 安装依赖
-    npm install
-    //or # 建议不要用cnpm  安装有各种诡异的bug 可以通过如下操作解决npm速度慢的问题
-    npm install --registry=https://registry.npm.taobao.org
-
-    # 本地开发 开启服务
-    npm run dev
-```
-浏览器访问 http://localhost:9527
-
-## 发布
-```bash
-    # 发布测试环境 带webpack ananalyzer
-    npm run build:sit-preview
-
-    # 构建生成环境
-    npm run build:prod
-```
-
-## 目录结构
-```shell
-├── build                      // 构建相关  
-├── config                     // 配置相关
-├── src                        // 源代码
-│   ├── api                    // 所有请求
-│   ├── assets                 // 主题 字体等静态资源
-│   ├── components             // 全局公用组件
-│   ├── directive              // 全局指令
-│   ├── filtres                // 全局filter
-│   ├── mock                   // mock数据
-│   ├── router                 // 路由
-│   ├── store                  // 全局store管理
-│   ├── styles                 // 全局样式
-│   ├── utils                  // 全局公用方法
-│   ├── view                   // view
-│   ├── App.vue                // 入口页面
-│   └── main.js                // 入口 加载组件 初始化等
-├── static                     // 第三方不打包资源
-│   └── Tinymce                // 富文本
-├── .babelrc                   // babel-loader 配置
-├── eslintrc.js                // eslint 配置项
-├── .gitignore                 // git 忽略项
-├── favicon.ico                // favicon图标
-├── index.html                 // html模板
-└── package.json               // package.json
-
-```
-
-## Changelog
-Detailed changes for each release are documented in the [release notes](https://github.com/PanJiaChen/vue-element-admin/releases).
-
-## Donate
-If you find this project useful, you can buy me a cup of coffee
-![donate](https://panjiachen.github.io/donate/donation.png)
-
-## 状态管理
-后台只有user和app配置相关状态使用vuex存在全局，其它数据都由每个业务页面自己管理。
-
-
-## 效果图
-
-#### 两步验证登录 支持微信和qq
-
-![两步验证 here](https://github.com/PanJiaChen/vue-element-admin/blob/master/gifs/2login.gif)
-
-#### 真正的动态换肤
-
-![真正的动态换肤](https://github.com/PanJiaChen/vue-element-admin/blob/master/gifs/theme.gif)<br />
-
-#### tabs
-
-![tabs](https://github.com/PanJiaChen/vue-element-admin/blob/master/gifs/tabs.gif)<br />
-
-
-
-#### 可收起侧边栏
-
-![enter image description here](https://github.com/PanJiaChen/vue-element-admin/blob/master/gifs/leftmenu.gif)
-
-#### table拖拽排序
-
-![enter image description here](https://github.com/PanJiaChen/vue-element-admin/blob/master/gifs/order.gif)
-
-
-#### 动态table
-
-![enter image description here](https://github.com/PanJiaChen/vue-element-admin/blob/master/gifs/dynamictable.gif)
-
-
-#### 上传裁剪头像
-
-![enter image description here](https://github.com/PanJiaChen/vue-element-admin/blob/master/gifs/uploadAvatar.gif)
-
-
-#### 错误统计
-
-![enter image description here](https://github.com/PanJiaChen/vue-element-admin/blob/master/gifs/errorlog.gif)
-
-
-#### 富文本(整合七牛 打水印等个性化功能)
-
-![enter image description here](https://github.com/PanJiaChen/vue-element-admin/blob/master/gifs/editor.gif)
-
-#### 封装table组件
-
-![enter image description here](https://github.com/PanJiaChen/vue-element-admin/blob/master/gifs/table.gif)
-
-#### 图表
-
-![enter image description here](https://github.com/PanJiaChen/vue-element-admin/blob/master/gifs/echarts.gif)
-
-
-#### 导出excel
-
-![enter image description here](https://github.com/PanJiaChen/vue-element-admin/blob/master/gifs/excel.png)
-
-
-## [查看更多demo](http://panjiachen.github.io/vue-element-admin)
-
-## License
-
-MIT
