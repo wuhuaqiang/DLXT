@@ -297,27 +297,31 @@
         SELECT *
         FROM sys_user
         WHERE status != 2
-        <!--<if test="loginName != null and loginName.length() != 0">
-            AND login_name LIKE concat('%', #{loginName},'%')
+        <if test="loginName != null and loginName.length() != 0">
+            AND login_name LIKE concat(concat('%', #{loginName}),'%')
         </if>
         <if test="zhName != null and zhName.length() != 0">
-            AND zh_name LIKE concat('%', #{zhName},'%')
+            AND zh_name LIKE concat(concat('%', #{zhName}),'%')
         </if>
         <if test="email != null and email.length() != 0">
-            AND email LIKE concat('%', #{email},'%')
+            AND email LIKE concat(concat('%', #{email}),'%')
         </if>
         <if test="phone != null and phone.length() != 0">
-            AND phone LIKE concat('%', #{phone},'%')
+            AND phone LIKE concat(concat('%', #{phone}),'%')
         </if>
         <if test="address != null and address.length() != 0">
-            AND address LIKE concat('%', #{address},'%')
+            AND address LIKE concat(concat('%', #{address}),'%')
         </if>
+       /* ORDER BY ZH_NAME ASC*/
         <if test="sort!=''">
             ORDER BY #{sort}
         </if>
-        <if test="order!=''">
-            #{order}
-        </if>-->
+        <if test="order=='ASC'">
+            ASC
+        </if>
+        <if test="order!='ASC'">
+            DESC
+        </if>
     </select>
 
     <select id="selectCounts" resultType="integer">
