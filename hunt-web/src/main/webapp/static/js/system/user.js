@@ -163,9 +163,9 @@ user_tool = {
             'onOpen': function () {
                 if (type == 2) {
                     var users = $("#user_grid").datagrid('getChecked')[0];
-                    for (var i = 0; i < users.permissions.length; i++) {
+                   /* for (var i = 0; i < users.permissions.length; i++) {
                         $("#user-permissions").datagrid("selectRecord", users.permissions[i].id);
-                    }
+                    }*/
                     for (var i = 0; i < users.userRoleOrganizations.length; i++) {
                         $("#jobs").treegrid("select", users.userRoleOrganizations[i].sysRoleOrganizationId);
                     }
@@ -229,11 +229,11 @@ user_tool = {
             var phone = $('#user_edit_dialog input[id="phone"]').val();
             var address = $('#user_edit_dialog input[id="address"]').val();
             var password = $('#user_edit_dialog input[id="password"]').val();
-            var permissions = $('#user_edit_dialog table[id="user-permissions"]').datagrid("getChecked");
-            var permissionIds = new Array();
+           /* var permissions = $('#user_edit_dialog table[id="user-permissions"]').datagrid("getChecked");*/
+            /*var permissionIds = new Array();
             for (var i = 0; i < permissions.length; i++) {
                 permissionIds[i] = permissions[i].id;
-            }
+            }*/
             var jobs = $('#user_edit_dialog table[id="jobs"]').treegrid("getChecked");
             var jobIds = new Array();
             for (var i = 0; i < jobs.length; i++) {
@@ -250,7 +250,8 @@ user_tool = {
                     phone: phone,
                     address: address,
                     password: password,
-                    permissionIds: permissionIds.toString(),
+                   /* permissionIds: permissionIds.toString(),*/
+                    permissionIds: '',
                     jobIds: jobIds.toString(),
                 },
                 traditional: true,
@@ -296,11 +297,11 @@ user_tool = {
             var phone = $('#user_edit_dialog input[id="phone"]').val();
             var address = $('#user_edit_dialog input[id="address"]').val();
             var password = $('#user_edit_dialog input[id="password"]').val();
-            var permissions = $('#user_edit_dialog table[id="user-permissions"]').datagrid("getChecked");
+           /* var permissions = $('#user_edit_dialog table[id="user-permissions"]').datagrid("getChecked");
             var permissionIds = new Array();
             for (var i = 0; i < permissions.length; i++) {
                 permissionIds[i] = permissions[i].id;
-            }
+            }*/
             var jobs = $('#user_edit_dialog table[id="jobs"]').treegrid("getChecked");
             var jobIds = new Array();
             for (var i = 0; i < jobs.length; i++) {
@@ -317,7 +318,8 @@ user_tool = {
                     email: email,
                     phone: phone,
                     address: address,
-                    permissionIds: permissionIds.toString(),
+                   /* permissionIds: permissionIds.toString(),*/
+                    permissionIds: '',
                     jobIds: jobIds.toString(),
                 },
                 traditional: true,

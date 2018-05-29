@@ -81,7 +81,7 @@
                                                              data-options="required:false"
                                                              class="easyui-textbox easyui-validatebox"></p>
         </div>
-        <div style="float: right;width: 200px;height: 100%">
+       <%-- <div style="float: right;width: 200px;height: 100%">
             <table id="user-permissions" class="easyui-datagrid" data-options="
                 url:'${pageContext.request.contextPath}/permission/list',
                 method:'get',
@@ -106,7 +106,7 @@
                 </tr>
                 </thead>
             </table>
-        </div>
+        </div>--%>
         <div style="float: right;width: 300px;height: 100%;">
             <table id="jobs" class="easyui-treegrid"
                    data-options="

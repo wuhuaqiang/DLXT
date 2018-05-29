@@ -19,6 +19,7 @@ import org.springframework.util.StringUtils;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -45,6 +46,7 @@ public class SysUserServiceImpl implements SysUserService {
     @Override
     public long insertUser(SysUser user, String jobIds, String permissionIds) {
         sysUserMapper.insert(user);
+       user.setId((long)sysUserMapper.selectMaxId());
         String[] jobIdArray = jobIds.split(",");
         for (String jobid : jobIdArray) {
             SysUserRoleOrganization userRoleOrganization = new SysUserRoleOrganization();
@@ -63,7 +65,7 @@ public class SysUserServiceImpl implements SysUserService {
                 sysUserPermissionMapper.insert(userPermission);
             }
         }
-        return sysUserMapper.selectMaxId();
+        return user.getId();
     }
 
     @Override
@@ -161,6 +163,8 @@ public class SysUserServiceImpl implements SysUserService {
         newLoginStatus.setSessionId(id.toString());
         newLoginStatus.setSessionExpires(new DateTime().plusDays(30).toDate());
         newLoginStatus.setPlatform(platform);
+        newLoginStatus.setCreateTime(new Date());
+        newLoginStatus.setStatus(1);
 
         SysLoginStatus oldLoginStatus = sysLoginStatusMapper.selectByUserIdAndPlatform(user.getId(), platform);
         if (oldLoginStatus != null) {
