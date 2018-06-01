@@ -6350,7 +6350,7 @@ LABL 0 新宋体,8,N</a:FontList>
 </o:Table>
 <o:Table Id="o45">
 <a:ObjectID>5897C3AC-93B9-42BC-AAE5-B1E3B3B519EA</a:ObjectID>
-<a:Name>权限组</a:Name>
+<a:Name>菜单</a:Name>
 <a:Code>sys_permission_group</a:Code>
 <a:CreationDate>1475842940</a:CreationDate>
 <a:Creator>ouyangan</a:Creator>

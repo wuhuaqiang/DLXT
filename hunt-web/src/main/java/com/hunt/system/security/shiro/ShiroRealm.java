@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -62,14 +63,20 @@ public class ShiroRealm extends AuthorizingRealm {
         Set<String> roles = new HashSet<>();
         for (SysUserPermission userPermission : userPermissions) {
             SysPermission sysPermission = sysPermissionMapper.selectById(userPermission.getSysPermissionId());
-            permissions.add(sysPermission.getCode());
+            if(sysPermission!=null) {
+                permissions.add(sysPermission.getCode());
+            }
         }
         List<SysUserRoleOrganization> userRoleOrganizations = sysUserRoleOrganizationMapper.selectByUserId(user.getId());
         for (SysUserRoleOrganization sysUserRoleOrganization : userRoleOrganizations) {
             SysRoleOrganization sysRoleOrganization = sysRoleOrganizationMapper.selectById(sysUserRoleOrganization.getSysRoleOrganizationId());
             SysRole sysRole = sysRoleMapper.selectById(sysRoleOrganization.getSysRoleId());
-            roles.add(sysRole.getName());
-            List<SysRolePermission> sysRolePermissions = sysRolePermissionMapper.selectByRoleId(sysRole.getId());
+            List<SysRolePermission> sysRolePermissions = new ArrayList<SysRolePermission>();
+            if(sysRole!=null){
+                roles.add(sysRole.getName());
+                sysRolePermissions = sysRolePermissionMapper.selectByRoleId(sysRole.getId());
+            }
+
             for (SysRolePermission sysRolePermission : sysRolePermissions) {
                 SysPermission sysPermission = sysPermissionMapper.selectById(sysRolePermission.getSysPermissionId());
                 permissions.add(sysPermission.getCode());

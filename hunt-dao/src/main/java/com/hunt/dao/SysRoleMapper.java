@@ -1,5 +1,6 @@
 package com.hunt.dao;
 
+import com.alibaba.fastjson.JSONObject;
 import com.hunt.model.entity.SysRole;
 import org.apache.ibatis.annotations.Param;
 
@@ -20,6 +21,8 @@ public interface SysRoleMapper {
 
     //通过id进行查询
     public SysRole selectById(@Param("id") Long id);
+
+    List<JSONObject> listRole();
 
     //查询全部
     public List<SysRole> selectAll();

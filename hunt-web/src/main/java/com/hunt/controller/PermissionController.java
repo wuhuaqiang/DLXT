@@ -42,7 +42,7 @@ public class PermissionController extends BaseController {
     /**
      * 新增权限
      *
-     * @param groupId     权限组id
+     * @param groupId     菜单id
      * @param name        名称
      * @param code        编码
      * @param description 描述
@@ -106,7 +106,7 @@ public class PermissionController extends BaseController {
      * 更新权限
      *
      * @param id          id
-     * @param groupId     权限组id
+     * @param groupId     菜单id
      * @param name        名称
      * @param code        编码
      * @param description 描述
@@ -162,13 +162,13 @@ public class PermissionController extends BaseController {
     }
 
     /**
-     * 新增权限组
+     * 新增菜单
      *
      * @param name        名称
      * @param description 描述
      * @return
      */
-    @ApiOperation(value = "新增权限组", httpMethod = "POST", produces = "application/json", response = Result.class)
+    @ApiOperation(value = "新增菜单", httpMethod = "POST", produces = "application/json", response = Result.class)
     @ResponseBody
     @RequiresPermissions("permission:group:insert")
     @RequestMapping(value = "group/insert", method = RequestMethod.POST)
@@ -187,11 +187,11 @@ public class PermissionController extends BaseController {
     }
 
     /**
-     * 查询权限组
+     * 查询菜单
      *
      * @return
      */
-    @ApiOperation(value = "查询权限组", httpMethod = "GET", produces = "application/json", response = Result.class)
+    @ApiOperation(value = "查询菜单", httpMethod = "GET", produces = "application/json", response = Result.class)
     @ResponseBody
     @RequiresPermissions("permission:group:list")
     @RequestMapping(value = "group/list", method = RequestMethod.GET)

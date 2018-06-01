@@ -135,6 +135,13 @@
                         </div>
                     </li>
                 </div>
+                <div style="padding: 5px 10px;">
+                    <li class="nav-list">
+                        <div class="easyui-linkbutton" data-options="iconCls:'icon-reload'" style="border: 0;"
+                             href="${pageContext.request.contextPath}/swagger-ui.html">接口文档
+                        </div>
+                    </li>
+                </div>
             </ul>
         </div>
     </div>

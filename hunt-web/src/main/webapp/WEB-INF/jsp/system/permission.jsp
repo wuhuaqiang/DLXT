@@ -21,7 +21,7 @@
 </div>
 <div id="save-permission-btn">
     <div data-options="iconCls:'icon-add' " id="save-permission-permission" style="width:70px">权限</div>
-    <div data-options="iconCls:'icon-add'" id="save-permission-group" style="width:70px">权限组</div>
+    <div data-options="iconCls:'icon-add'" id="save-permission-group" style="width:70px">菜单</div>
 </div>
 
 <div id="save-permission-dialog">
@@ -59,7 +59,7 @@
                 </thead>
                 <thead>
                 <tr>
-                    <th data-options="field:'name',width:200">权限组名称</th>
+                    <th data-options="field:'name',width:200">菜单名称</th>
                 </tr>
                 </thead>
             </table>

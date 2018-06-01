@@ -422,8 +422,8 @@ INSERT INTO `sys_permission` VALUES ('33', '密码', '修改密码', 'user:updat
 INSERT INTO `sys_permission` VALUES ('34', '查看数据库监控', '查看数据库监控', 'db:select', '7', '2', '0', '2016-10-31 21:31:34', '2016-10-31 23:51:47', '0', '0', '1');
 INSERT INTO `sys_permission` VALUES ('35', '下线', '下线用户', 'user:loginout', '1', '2', '0', '2016-10-31 21:32:45', '2016-10-31 23:51:47', '0', '0', '1');
 INSERT INTO `sys_permission` VALUES ('36', '用户在线列表', '用户在线列表', 'user:loginStatu:list', '1', '2', '0', '2016-10-31 21:33:26', '2016-10-31 23:51:47', '0', '0', '1');
-INSERT INTO `sys_permission` VALUES ('37', '新建权限组', '新建权限组', 'permission:group:insert', '2', '2', '0', '2016-10-31 21:34:12', '2016-10-31 23:51:47', '0', '0', '1');
-INSERT INTO `sys_permission` VALUES ('38', '权限组列表', '权限组列表', 'permission:group:list', '2', '2', '0', '2016-10-31 21:35:10', '2016-10-31 23:51:47', '0', '0', '1');
+INSERT INTO `sys_permission` VALUES ('37', '新建菜单', '新建菜单', 'permission:group:insert', '2', '2', '0', '2016-10-31 21:34:12', '2016-10-31 23:51:47', '0', '0', '1');
+INSERT INTO `sys_permission` VALUES ('38', '菜单列表', '菜单列表', 'permission:group:list', '2', '2', '0', '2016-10-31 21:35:10', '2016-10-31 23:51:47', '0', '0', '1');
 INSERT INTO `sys_permission` VALUES ('39', '新增', '新增IP', 'ip:insert', '8', '2', '0', '2016-10-31 21:44:18', '2016-10-31 23:51:47', '0', '0', '1');
 INSERT INTO `sys_permission` VALUES ('40', '更新', '更新ip', 'ip:update', '8', '2', '0', '2016-10-31 21:44:44', '2016-10-31 23:51:47', '0', '0', '1');
 INSERT INTO `sys_permission` VALUES ('41', '删除', '删除ip', 'ip:delete', '8', '2', '0', '2016-10-31 21:44:59', '2016-10-31 23:51:47', '0', '0', '1');

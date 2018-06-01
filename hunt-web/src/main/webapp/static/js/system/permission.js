@@ -39,7 +39,7 @@ permission_tool = {
             common_tool.messager_show("请输入权限描述");
         }
         else if ($("#permission-group").treegrid("getChecked").length == 0) {
-            common_tool.messager_show("请选择权限组");
+            common_tool.messager_show("请选择菜单");
         } else {
             var name = $("#permission_name").val();
             var code = $("#permission_code").val();
@@ -80,7 +80,7 @@ permission_tool = {
             common_tool.messager_show("请输入权限描述");
         }
         else if ($("#permission-group").treegrid("getChecked").length == 0) {
-            common_tool.messager_show("请选择权限组");
+            common_tool.messager_show("请选择菜单");
         } else {
             var name = $("#permission_name").val();
             var code = $("#permission_code").val();
@@ -146,7 +146,7 @@ permission_tool = {
     },
     init_edit_group_view: function () {
         $("#save-permission-group-dialog").dialog({
-            title: '新增权限组',
+            title: '新增菜单',
             iconCls: 'icon-save',
             closable: true,
             width: 450,

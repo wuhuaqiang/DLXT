@@ -67,6 +67,9 @@ public class SysRoleServiceImpl implements SysRoleService {
     @Override
     public PageInfo selectPage(int page, int row) {
         int counts = sysRoleMapper.selectCounts();
+        System.out.println("*******************************");
+        System.out.println(sysRoleMapper.listRole());
+        System.out.println("*******************************");
         List<SysRole> sysRoles = sysRoleMapper.selectAll();
 
         List<SysRoleDto> sysRoleDtoList = new ArrayList<>();

@@ -43,7 +43,7 @@ data_tool = {
             return false;
         }
         else if ($("#save-data-dialog table[id='data-group']").treegrid("getChecked").length == 0) {
-            common_tool.messager_show("请选择权限组");
+            common_tool.messager_show("请选择菜单");
             return false;
         }
         return true;
