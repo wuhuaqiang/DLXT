@@ -15,6 +15,23 @@
         <result column="update_by" property="updateBy" jdbcType="BIGINT"/>
         <result column="status" property="status" jdbcType="TINYINT"/>
     </resultMap>
+
+    <resultMap id="permissionMap" type="com.heeexy.example.util.model.One2Many">
+        <id column="menuName" property="menuName"/>
+        <collection property="permissions" ofType="com.alibaba.fastjson.JSONObject">
+            <id column="id" property="id"/>
+            <result column="permissionName" property="permissionName"/>
+            <result column="requiredPerm" property="requiredPerm" javaType="Integer"/>
+        </collection>
+    </resultMap>
+    <select id="listAllPermission" resultMap="permissionMap">
+        SELECT
+            p.id                  id,
+            p.menu_name           menuName,
+            p.permission_name     permissionName,
+            p.required_permission requiredPerm
+        FROM sys_permission p;
+    </select>
     <!--  -->
     <sql id="sql_column">
         id,
